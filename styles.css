@@ -469,6 +469,14 @@ body {
         flex-direction: column;
         gap: 1rem;
     }
+
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-hero {
+        padding: 12vh 0 6vh;
+    }
 }
 
 /* About Page Styles */
