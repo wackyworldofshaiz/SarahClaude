@@ -453,46 +453,13 @@
             background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
         }
     </style>
+    <script>
+        // Set initial theme before page loads (prevents flash)
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    </script>
 </head>
 <body>
-    <script>
-        // Theme toggle functionality
-        const themeToggle = document.querySelector('.theme-toggle');
-        const htmlElement = document.documentElement;
-        
-        // Check for saved theme preference or default to light mode
-        const currentTheme = localStorage.getItem('theme') || 'light';
-        htmlElement.setAttribute('data-theme', currentTheme);
-        
-        themeToggle.addEventListener('click', function() {
-            const currentTheme = htmlElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            
-            htmlElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-        });
-
-        // Intersection Observer for section title fade-ins
-        document.addEventListener('DOMContentLoaded', function() {
-            const observerOptions = {
-                threshold: 0.2,
-                rootMargin: '0px 0px -100px 0px'
-            };
-
-            const observer = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, observerOptions);
-
-            // Observe all section titles
-            document.querySelectorAll('.section-title').forEach(title => {
-                observer.observe(title);
-            });
-        });
-    </script>
     <!-- Hero Section -->
     <button class="theme-toggle" aria-label="Toggle dark mode">
         <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
@@ -722,5 +689,41 @@
             <p class="footer-note">© 2026 Sarah Shaibu — Product Designer</p>
         </div>
     </section>
+
+    <script>
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            const themeToggle = document.querySelector('.theme-toggle');
+            const htmlElement = document.documentElement;
+            
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = htmlElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                
+                htmlElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            });
+
+            // Intersection Observer for section title fade-ins
+            const observerOptions = {
+                threshold: 0.2,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all section titles
+            document.querySelectorAll('.section-title').forEach(title => {
+                observer.observe(title);
+            });
+        });
+    </script>
 </body>
 </html>
