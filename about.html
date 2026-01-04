@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About — Sarah Shaibu</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* About page specific styles */
+        .about-hero {
+            min-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 15vh 0 8vh;
+            position: relative;
+        }
+
+        .about-hero-titles {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 300;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .about-hero-titles h1 {
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+        }
+
+        .about-hero-titles .highlight {
+            font-style: italic;
+        }
+
+        .beach-note {
+            font-size: 15px;
+            color: var(--accent);
+            font-style: italic;
+            margin-bottom: 4rem;
+        }
+
+        .community-stat {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 300;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            max-width: 900px;
+        }
+
+        .community-stat a {
+            color: var(--charcoal);
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 4px;
+            transition: opacity 0.3s ease;
+        }
+
+        .community-stat a:hover {
+            opacity: 0.6;
+        }
+
+        .supporting-text {
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--soft-black);
+            max-width: 700px;
+            margin-bottom: 4rem;
+        }
+
+        .deszign-section {
+            margin: 8rem 0;
+        }
+
+        .book-cta {
+            display: inline-block;
+            font-size: 16px;
+            color: var(--cream);
+            background: var(--charcoal);
+            text-decoration: none;
+            padding: 1rem 2.5rem;
+            border-radius: 2px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-top: 2rem;
+        }
+
+        .book-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* News Grid */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .news-item {
+            border-top: 1px solid var(--border);
+            padding-top: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .news-item:hover {
+            transform: translateY(-4px);
+        }
+
+        .news-title {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+
+        .news-org {
+            font-size: 14px;
+            color: var(--accent);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .news-link {
+            display: inline-block;
+            font-size: 14px;
+            color: var(--charcoal);
+            text-decoration: none;
+            padding: 0.5rem 1.5rem;
+            border: 1px solid var(--border);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .news-link:hover {
+            background: var(--charcoal);
+            color: var(--cream);
+            border-color: var(--charcoal);
+        }
+
+        @media (max-width: 768px) {
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-hero {
+                padding: 12vh 0 6vh;
+            }
+        }
+    </style>
+    <script>
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    </script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">Sarah Shaibu</a>
+            <div class="navbar-links">
+                <a href="index.html" class="navbar-link">Home</a>
+                <a href="about.html" class="navbar-link active">About</a>
+                <a href="https://www.linkedin.com/in/sarahshaibu/" target="_blank" class="navbar-link">Resume</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" aria-label="Toggle dark mode">
+        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+        </svg>
+        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+        </svg>
+    </button>
+
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <div class="container">
+            <div class="about-hero-titles">
+                <h1>Founder. Designer.</h1>
+                <h1 class="highlight">Creator & Influencer +</h1>
+                <h1>Future Citizen Astronaut.</h1>
+            </div>
+            <p class="beach-note">I'm probably editing this section from a beach in Barcelona...</p>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section class="section">
+        <div class="container">
+            <p class="community-stat">
+                Over the last 8 years, I have built a growing community of over 80,000 designers on <a href="https://www.linkedin.com/in/sarahshaibu/" target="_blank">LinkedIn</a> where I share content on growing a design career
+            </p>
+            <p class="supporting-text">
+                I love to share my insights and journey of becoming a designer with others and helping to facilitate design conversations that help the next generation of designers grow.
+            </p>
+        </div>
+    </section>
+
+    <!-- Deszigntheraphy Section -->
+    <section class="deszign-section">
+        <div class="container">
+            <p class="community-stat">
+                To give back to my community, I created Deszigntheraphy, a platform that talks about career growth in tech and creates useful resources and books for designers.
+            </p>
+            <p class="supporting-text">
+                If you'd like to chat about speaking gigs, products or design do get in touch at <strong>snefisat@gmail.com</strong> or connect with me on LinkedIn using the handle <strong>@sarahshaibu</strong>
+            </p>
+            <a href="https://dezigntherapy.gumroad.com/l/tioppz" target="_blank" class="book-cta">Buy my new book</a>
+        </div>
+    </section>
+
+    <!-- In The News Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">In the News</h2>
+            <div class="news-grid">
+                <article class="news-item">
+                    <h3 class="news-title">Starting a UX Career in 2024</h3>
+                    <div class="news-org">Career Salon</div>
+                    <a href="https://www.linkedin.com/feed/update/urn:li:activity:7157014770619981825" target="_blank" class="news-link">Watch</a>
+                </article>
+
+                <article class="news-item">
+                    <h3 class="news-title">Ethical & Inclusive Design</h3>
+                    <div class="news-org">Glovo</div>
+                    <a href="https://www.figma.com/proto/sGOQG0tu9rJAG0A62DWn8V/Ethical-and-Inclusive-Design?page-id=34%3A10753&type=design&node-id=131-7828&viewport=966%2C1907%2C0.12&t=2roRsyUz8bWLRTPQ-1&scaling=contain&mode=design" target="_blank" class="news-link">Read</a>
+                </article>
+
+                <article class="news-item">
+                    <h3 class="news-title">Building your Personal Brand</h3>
+                    <div class="news-org">Senior Internet</div>
+                    <a href="https://www.youtube.com/watch?v=wTWhnRNRp90&ab_channel=stirfry" target="_blank" class="news-link">Watch</a>
+                </article>
+
+                <article class="news-item">
+                    <h3 class="news-title">The Future of UX in Africa</h3>
+                    <div class="news-org">Charisol</div>
+                    <a href="https://www.designwhine.com/issue-08/" target="_blank" class="news-link">Read</a>
+                </article>
+
+                <article class="news-item">
+                    <h3 class="news-title">A Guide to Everyday Design Ethics</h3>
+                    <div class="news-org">Charisol</div>
+                    <a href="https://www.canva.com/design/DAFCom9ghl0/TCZWuUnzQtQd7Aczrb8VoQ/view?utm_content=DAFCom9ghl0&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink" target="_blank" class="news-link">Read</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <h2 class="contact-title">Let's Connect</h2>
+            <div class="contact-links">
+                <a href="mailto:snefisat@gmail.com" class="contact-link">Email Me</a>
+                <a href="https://www.linkedin.com/in/sarahshaibu/" target="_blank" class="contact-link">LinkedIn</a>
+            </div>
+            <p class="footer-note">© 2026 Sarah Shaibu — Product Designer</p>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.querySelector('.theme-toggle');
+            const htmlElement = document.documentElement;
+            
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = htmlElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                
+                htmlElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            });
+        });
+    </script>
+</body>
+</html>
