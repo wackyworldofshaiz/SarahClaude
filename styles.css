@@ -97,6 +97,15 @@ body {
     background: var(--charcoal);
 }
 
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8vh 0;
+    position: relative;
+}
+
 .hero-title {
     font-size: clamp(1.5rem, 3vw, 2.5rem);
     font-weight: 300;
