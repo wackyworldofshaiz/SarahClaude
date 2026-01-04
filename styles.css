@@ -97,26 +97,8 @@ body {
     background: var(--charcoal);
 }
 
-.hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 8vh 0;
-    position: relative;
-}
-
-.hero-label {
-    font-size: 13px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 2rem;
-    font-weight: 500;
-}
-
 .hero-title {
-    font-size: clamp(3rem, 8vw, 7rem);
+    font-size: clamp(3rem, 8vw, 6rem);
     font-weight: 400;
     line-height: 1;
     margin-bottom: 3rem;
